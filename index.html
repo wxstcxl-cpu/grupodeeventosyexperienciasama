@@ -14,35 +14,24 @@
   <style>
     :root { --gold: #d4af37; --dark: #0a0a0a; --dark-accent: #1a1a1a; --whatsapp-green: #25d366; --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
     body { margin: 0; background-color: var(--dark); color: white; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
-    
-    /* Panel Lateral Mejorado */
     .more-info-trigger { position: fixed; top: 20px; right: 20px; z-index: 1002; color: var(--gold); font-size: 24px; cursor: pointer; background: rgba(0, 0, 0, 0.5); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid rgba(212, 175, 55, 0.3); }
-    .side-panel { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100%; background: #0f0f0f; z-index: 2000; transition: 0.5s; padding: 40px; box-sizing: border-box; overflow-y: auto; box-shadow: -5px 0 15px rgba(0,0,0,0.5); }
+    .side-panel { position: fixed; top: 0; right: -100%; width: 100%; max-width: 500px; height: 100%; background: #0f0f0f; z-index: 2000; transition: 0.5s; padding: 40px; box-sizing: border-box; overflow-y: auto; }
     .side-panel.active { right: 0; }
-    .panel-link { display: block; background: var(--dark-accent); color: var(--gold); padding: 15px; margin: 15px 0; text-decoration: none; border-radius: 10px; border: 1px solid var(--gold); text-align: center; transition: 0.3s; font-weight: 600; }
-    .panel-link:hover { background: var(--gold); color: black; }
-
-    /* Botones Flotantes */
     .floating-container { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 1001; }
-    .float-btn { width: 60px; height: 60px; border-radius: 50px; display: flex; justify-content: center; align-items: center; color: white; font-size: 30px; text-decoration: none; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); transition: 0.3s; }
-    .float-btn:hover { transform: scale(1.1); }
+    .float-btn { width: 60px; height: 60px; border-radius: 50px; display: flex; justify-content: center; align-items: center; color: white; font-size: 30px; text-decoration: none; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); }
     .btn-whatsapp { background-color: var(--whatsapp-green); }
     .btn-insta { background: var(--insta-gradient); }
-
     header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&amp;fit=crop&amp;q=80&amp;w=2069') no-repeat center center/cover; }
     .logo-ama { max-width: 320px; width: 75%; height: auto; margin-bottom: 20px; }
-    
     section { padding: 80px 20px; max-width: 1100px; margin: auto; }
-    .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--gold); margin-bottom: 40px; }
-    
+    .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--gold); }
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-    .card { background: var(--dark-accent); padding: 30px; border-radius: 15px; text-align: center; border: 1px solid #333; transition: 0.3s; text-decoration: none; color: white; display: block; }
-    .card:hover { border-color: var(--gold); transform: translateY(-5px); }
-    
-    .btn { background: var(--gold); color: black; padding: 18px 45px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; text-transform: uppercase; border: none; cursor: pointer; transition: 0.3s; }
-    .btn:hover { background: #b8962d; transform: scale(1.05); }
-    
+    .card { background: var(--dark-accent); padding: 30px; border-radius: 15px; text-align: center; border: 1px solid #333; text-decoration: none; color: white; display: block; }
+    .btn { background: var(--gold); color: black; padding: 18px 45px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; text-transform: uppercase; border: none; }
     footer { text-align: center; padding: 40px; color: #666; font-size: 0.8rem; border-top: 1px solid #222; }
+    
+    /* Estilo para los nuevos links en el panel */
+    .extra-link { display: block; color: var(--gold); text-decoration: none; margin: 20px 0; padding: 10px; border: 1px solid var(--gold); border-radius: 10px; text-align: center; font-weight: 600; }
   </style>
 </head>
 <body>
@@ -50,17 +39,15 @@
     <b:widget id='Blog1' locked='true' title='Entradas del blog' type='Blog' visible='false'/>
   </b:section>
 
-  <div class='more-info-trigger' onclick='togglePanel()'><i class='fas fa-bars'/></div>
-  
+  <div class='more-info-trigger' onclick='togglePanel()'><i class='fas fa-ellipsis-v'/></div>
   <div class='side-panel' id='sidePanel'>
-    <span onclick='togglePanel()' style='cursor:pointer; color:var(--gold); font-size:35px;'>&times;</span>
+    <span onclick='togglePanel()' style='cursor:pointer; color:var(--gold); font-size:30px;'>&#215;</span>
     <div class='panel-content'>
-      <h2 style='color:var(--gold); font-family:Playfair Display; margin-top:20px;'>Menú Principal</h2>
-      <p style='color:#ccc; font-size: 0.9rem;'>Transformamos tus momentos en recuerdos memorables.</p>
+      <h2 style='color:var(--gold); font-family:Playfair Display;'>Más de Nosotros</h2>
+      <p>AMA Grupo de Eventos y Experiencias busca transformar momentos en recuerdos memorables.</p>
       
-      <a class='panel-link' href='https://docs.google.com/forms/d/e/1FAIpQLSfVrGB27_FLo-bebcQ_GpC99Mu7sE2U_5klCWSsP511jSzcLw/viewform?usp=header' target='_blank'>Únete a nosotros</a>
-      
-      <a class='panel-link' href='https://docs.google.com/forms/d/e/1FAIpQLSdGlFTOZtlad3m3u2cH6k48ZSUWsD6_HYVVOkybCYifR9K3Fg/viewform?usp=header' target='_blank'>Evalúanos</a>
+      <a class='extra-link' href='https://docs.google.com/forms/d/e/1FAIpQLSfVrGB27_FLo-bebcQ_GpC99Mu7sE2U_5klCWSsP511jSzcLw/viewform?usp=header' target='_blank'>Únete a nosotros</a>
+      <a class='extra-link' href='https://docs.google.com/forms/d/e/1FAIpQLSdGlFTOZtlad3m3u2cH6k48ZSUWsD6_HYVVOkybCYifR9K3Fg/viewform?usp=header' target='_blank'>Evalúanos</a>
     </div>
   </div>
 
@@ -71,36 +58,39 @@
 
   <header>
     <img alt='AMA Logo' class='logo-ama' src='https://i.ibb.co/0pSKGj2h/612067499-17852192895605501-7346069979131350917-n.jpg'/>
-    <p style='color:#eee; letter-spacing:4px; font-size: 0.8rem;'>EXPERIENCIAS QUE PERDURAN EN EL TIEMPO</p>
+    <p style='color:#eee; letter-spacing:4px;'>EXPERIENCIAS QUE PERDURAN</p>
     <a class='btn' href='https://wa.me/573002039975' target='_blank'>Cotizar ahora</a>
   </header>
 
   <section id='servicios'>
-    <h2 class='section-title'>Nuestros Servicios</h2>
+    <h2 class='section-title'>Servicios</h2>
     <div class='services-grid'>
-      <div class='card'><i class='fas fa-child' style='font-size:2.5rem; color:var(--gold); margin-bottom:15px;'/><h3 style='color:var(--gold);'>Recreación</h3></div>
-      <div class='card'><i class='fas fa-crown' style='font-size:2.5rem; color:var(--gold); margin-bottom:15px;'/><h3 style='color:var(--gold);'>15 Años</h3></div>
-      <div class='card'><i class='fas fa-magic' style='font-size:2.5rem; color:var(--gold); margin-bottom:15px;'/><h3 style='color:var(--gold);'>Decoración</h3></div>
+      <div class='card'><i class='fas fa-child' style='font-size:2rem; color:var(--gold);'/><h3 style='color:var(--gold);'>Recreación</h3></div>
+      <div class='card'><i class='fas fa-crown' style='font-size:2rem; color:var(--gold);'/><h3 style='color:var(--gold);'>15 Años</h3></div>
+      <div class='card'><i class='fas fa-magic' style='font-size:2rem; color:var(--gold);'/><h3 style='color:var(--gold);'>Decoración</h3></div>
       
       <a class='card' href='https://docs.google.com/forms/d/e/1FAIpQLSfVrGB27_FLo-bebcQ_GpC99Mu7sE2U_5klCWSsP511jSzcLw/viewform?usp=header' target='_blank'>
-        <i class='fas fa-users' style='font-size:2.5rem; color:var(--gold); margin-bottom:15px;'/>
+        <i class='fas fa-users' style='font-size:2rem; color:var(--gold);'/>
         <h3 style='color:var(--gold);'>Únete a nosotros</h3>
       </a>
-      
       <a class='card' href='https://docs.google.com/forms/d/e/1FAIpQLSdGlFTOZtlad3m3u2cH6k48ZSUWsD6_HYVVOkybCYifR9K3Fg/viewform?usp=header' target='_blank'>
-        <i class='fas fa-star' style='font-size:2.5rem; color:var(--gold); margin-bottom:15px;'/>
+        <i class='fas fa-star' style='font-size:2rem; color:var(--gold);'/>
         <h3 style='color:var(--gold);'>Evalúanos</h3>
       </a>
     </div>
   </section>
 
-  <footer>&copy; 2026 AMA - Grupo de Eventos y Experiencias</footer>
+  <footer>&#169; 2026 AMA - Grupo de Eventos y Experiencias</footer>
 
   <script type='text/javascript'>
     //<![CDATA[
     function togglePanel() { 
       var panel = document.getElementById('sidePanel');
-      panel.classList.toggle('active');
+      if (panel.classList.contains('active')) {
+        panel.classList.remove('active');
+      } else {
+        panel.classList.add('active');
+      }
     }
     //]]>
   </script>
